@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaTimes, FaArrowRight } from 'react-icons/fa';
+import { FaTimes, FaArrowRight, FaUser, FaUserShield } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 
 export function AuthModal({ isOpen, onClose }) {
@@ -122,7 +122,7 @@ export function AuthModal({ isOpen, onClose }) {
                 type="tel"
                 name="phone"
                 className="form-input"
-                placeholder="+1 (555) 000-0000"
+                placeholder="+234 801 234 5678"
                 value={formData.phone}
                 onChange={handleChange}
               />
@@ -145,23 +145,25 @@ export function AuthModal({ isOpen, onClose }) {
           <div style={{ display: 'flex', gap: '8px' }}>
             <button
               type="button"
-              style={{ flex: 1, padding: '8px', fontSize: '12px', borderRadius: '6px', border: '1px solid var(--border-color)', background: 'var(--bg-card)', color: 'var(--text-main)', cursor: 'pointer', fontWeight: 600 }}
+              style={{ flex: 1, padding: '8px', fontSize: '12px', borderRadius: '6px', border: '1px solid var(--border-color)', background: 'var(--bg-card)', color: 'var(--text-main)', cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
               onClick={async () => {
                 const res = await login('alex@example.com', 'password123');
                 if (res.success) onClose();
               }}
             >
-              👤 Customer Demo
+              <FaUser size={12} color="var(--color-primary)" />
+              <span>Customer Demo</span>
             </button>
             <button
               type="button"
-              style={{ flex: 1, padding: '8px', fontSize: '12px', borderRadius: '6px', border: '1px solid var(--color-primary)', background: 'var(--color-primary-light)', color: 'var(--color-primary)', cursor: 'pointer', fontWeight: 700 }}
+              style={{ flex: 1, padding: '8px', fontSize: '12px', borderRadius: '6px', border: '1px solid var(--color-primary)', background: 'var(--color-primary-light)', color: 'var(--color-primary)', cursor: 'pointer', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
               onClick={async () => {
                 const res = await login('admin@biteswift.com', 'admin123');
                 if (res.success) onClose();
               }}
             >
-              👑 Admin Demo
+              <FaUserShield size={13} color="var(--color-primary)" />
+              <span>Admin Demo</span>
             </button>
           </div>
         </div>

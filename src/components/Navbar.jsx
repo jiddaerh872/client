@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaShoppingBag, FaUser, FaUtensils, FaClipboardList, FaSignOutAlt, FaUserShield } from 'react-icons/fa';
+import { FaShoppingBag, FaUser, FaUtensils, FaClipboardList, FaSignOutAlt, FaUserShield, FaHamburger } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 
@@ -17,7 +17,7 @@ export function Navbar({ activeTab, setActiveTab, onOpenAuth }) {
           style={{ cursor: 'pointer' }}
           onClick={() => setActiveTab('menu')}
         >
-          <span style={{ fontSize: '28px' }}>🍔</span>
+          <FaHamburger size={28} color="var(--color-primary)" style={{ marginRight: '6px' }} />
           <span>Bite<span style={{ color: 'var(--color-primary)' }}>Swift</span></span>
           <span className="brand-badge">Local Eats</span>
         </div>

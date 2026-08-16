@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CategoryFilter } from '../components/CategoryFilter';
 import { FoodCard } from '../components/FoodCard';
-import { FaExclamationTriangle } from 'react-icons/fa';
+import { FaExclamationTriangle, FaClock, FaUtensils } from 'react-icons/fa';
 
 export function MenuPage() {
   const [items, setItems] = useState([]);
@@ -63,7 +63,9 @@ export function MenuPage() {
       {/* Loading state */}
       {loading && (
         <div className="empty-state">
-          <div className="empty-icon">⏳</div>
+          <div className="empty-icon">
+            <FaClock size={48} color="var(--text-muted)" />
+          </div>
           <p>Loading fresh food items...</p>
         </div>
       )}
@@ -89,7 +91,9 @@ export function MenuPage() {
       {/* Empty Search Results */}
       {!loading && !error && items.length === 0 && (
         <div className="empty-state">
-          <div className="empty-icon">🍽️</div>
+          <div className="empty-icon">
+            <FaUtensils size={48} color="var(--text-muted)" />
+          </div>
           <h3>No food items found</h3>
           <p style={{ marginTop: '8px', fontSize: '14px' }}>Try clearing your search term or switching categories.</p>
         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   FaPlus, FaEdit, FaTrash, FaCheck, FaTimes, FaSearch, 
   FaUtensils, FaClipboardList, FaMoneyBillWave, FaBoxOpen, 
-  FaStar, FaToggleOn, FaToggleOff, FaMagic, FaSyncAlt, FaExclamationTriangle
+  FaStar, FaToggleOn, FaToggleOff, FaMagic, FaSyncAlt, FaExclamationTriangle, FaUserShield, FaBox
 } from 'react-icons/fa';
 import { formatNaira } from '../utils/currency';
 import { useAuth } from '../context/AuthContext';
@@ -237,7 +237,7 @@ export function AdminDashboardPage() {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '28px' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-            <span style={{ fontSize: '28px' }}>👑</span>
+            <FaUserShield size={28} color="var(--color-primary)" />
             <h1 style={{ fontSize: '32px', fontWeight: 800 }}>Admin Dashboard</h1>
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '14px' }}>
@@ -520,7 +520,9 @@ export function AdminDashboardPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           {orders.length === 0 ? (
             <div className="empty-state">
-              <div className="empty-icon">📦</div>
+              <div className="empty-icon">
+                <FaBox size={48} color="var(--text-muted)" />
+              </div>
               <h3>No customer orders placed yet</h3>
               <p style={{ marginTop: '8px' }}>Orders submitted by customers will appear here in real-time.</p>
             </div>

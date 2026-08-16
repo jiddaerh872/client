@@ -34,7 +34,9 @@ export function CartModal({ isOpen, onClose, onProceedCheckout }) {
 
         {cartItems.length === 0 ? (
           <div className="empty-state">
-            <div className="empty-icon">🛒</div>
+            <div className="empty-icon">
+              <FaShoppingBag size={48} color="var(--text-muted)" />
+            </div>
             <h3>Your cart is empty</h3>
             <p style={{ marginTop: '8px', fontSize: '14px' }}>Add some delicious food from our menu to get started!</p>
           </div>

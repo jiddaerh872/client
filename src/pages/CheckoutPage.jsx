@@ -20,7 +20,9 @@ export function CheckoutPage({ onBackToMenu, onOrderSuccess, onRequireAuth }) {
   if (cartItems.length === 0) {
     return (
       <div className="empty-state">
-        <div className="empty-icon">🛒</div>
+        <div className="empty-icon">
+          <FaShoppingBag size={48} color="var(--text-muted)" />
+        </div>
         <h2>Your cart is empty</h2>
         <p style={{ marginTop: '8px', marginBottom: '24px' }}>Please add some items to your cart before checking out.</p>
         <button className="btn-primary" onClick={onBackToMenu}>

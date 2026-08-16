@@ -41,7 +41,9 @@ export function OrdersPage({ onBackToMenu }) {
   if (!isAuthenticated) {
     return (
       <div className="empty-state">
-        <div className="empty-icon">🔒</div>
+        <div className="empty-icon">
+          <FaLock size={48} color="var(--text-muted)" />
+        </div>
         <h2>Sign In to View Your Orders</h2>
         <p style={{ marginTop: '8px' }}>Please log in to track your current food orders and order history.</p>
       </div>
@@ -65,7 +67,9 @@ export function OrdersPage({ onBackToMenu }) {
 
       {loading && (
         <div className="empty-state">
-          <div className="empty-icon">⏳</div>
+          <div className="empty-icon">
+            <FaClock size={48} color="var(--text-muted)" />
+          </div>
           <p>Loading your orders...</p>
         </div>
       )}
@@ -86,7 +90,9 @@ export function OrdersPage({ onBackToMenu }) {
 
       {!loading && !error && orders.length === 0 && (
         <div className="empty-state">
-          <div className="empty-icon">📦</div>
+          <div className="empty-icon">
+            <FaBox size={48} color="var(--text-muted)" />
+          </div>
           <h3>No orders placed yet</h3>
           <p style={{ marginTop: '8px', marginBottom: '24px' }}>Looks like you haven't ordered any delicious food yet!</p>
           <button className="btn-primary" onClick={onBackToMenu}>
