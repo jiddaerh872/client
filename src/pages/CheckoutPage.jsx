@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaShoppingBag, FaMapMarkerAlt, FaCreditCard, FaArrowLeft, FaCheckCircle } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { formatNaira } from '../utils/currency';
 
 export function CheckoutPage({ onBackToMenu, onOrderSuccess, onRequireAuth }) {
   const { cartItems, subtotal, deliveryFee, tax, total, clearCart } = useCart();
@@ -136,7 +137,7 @@ export function CheckoutPage({ onBackToMenu, onOrderSuccess, onRequireAuth }) {
               <input 
                 type="tel" 
                 className="form-input"
-                placeholder="+1 (555) 234-5678"
+                placeholder="+234 801 234 5678"
                 value={customerPhone}
                 onChange={(e) => setCustomerPhone(e.target.value)}
                 required
@@ -148,7 +149,7 @@ export function CheckoutPage({ onBackToMenu, onOrderSuccess, onRequireAuth }) {
               <textarea 
                 className="form-input"
                 rows="3"
-                placeholder="e.g. 123 University Ave, Apt 4B, Campus View"
+                placeholder="e.g. 12 Ahmadu Bello Way, Victoria Island, Lagos"
                 value={deliveryAddress}
                 onChange={(e) => setDeliveryAddress(e.target.value)}
                 required
@@ -160,7 +161,7 @@ export function CheckoutPage({ onBackToMenu, onOrderSuccess, onRequireAuth }) {
               <input 
                 type="text" 
                 className="form-input"
-                placeholder="e.g. Ring doorbell, leave at front desk"
+                placeholder="e.g. Call upon arrival, leave with security guard"
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
               />
@@ -172,7 +173,7 @@ export function CheckoutPage({ onBackToMenu, onOrderSuccess, onRequireAuth }) {
             </h3>
 
             <div style={{ display: 'flex', gap: '12px' }}>
-              {['Cash on Delivery', 'Card on Delivery'].map((method) => (
+              {['Cash on Delivery', 'Transfer / Card on Delivery'].map((method) => (
                 <button
                   key={method}
                   type="button"
@@ -209,26 +210,26 @@ export function CheckoutPage({ onBackToMenu, onOrderSuccess, onRequireAuth }) {
                 <div>
                   <span style={{ fontWeight: 600 }}>{item.quantity}x</span> {item.name}
                 </div>
-                <span style={{ fontWeight: 600 }}>${(item.price * item.quantity).toFixed(2)}</span>
+                <span style={{ fontWeight: 600 }}>{formatNaira(item.price * item.quantity)}</span>
               </div>
             ))}
           </div>
 
           <div className="summary-row">
             <span>Subtotal</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span>{formatNaira(subtotal)}</span>
           </div>
           <div className="summary-row">
             <span>Delivery Fee</span>
-            <span>${deliveryFee.toFixed(2)}</span>
+            <span>{formatNaira(deliveryFee)}</span>
           </div>
           <div className="summary-row">
-            <span>Tax (8%)</span>
-            <span>${tax.toFixed(2)}</span>
+            <span>VAT (7.5%)</span>
+            <span>{formatNaira(tax)}</span>
           </div>
           <div className="summary-row total">
             <span>Total</span>
-            <span>${total.toFixed(2)}</span>
+            <span>{formatNaira(total)}</span>
           </div>
 
           <button

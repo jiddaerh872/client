@@ -140,7 +140,33 @@ export function AuthModal({ isOpen, onClose }) {
           </button>
         </form>
 
-        <div style={{ marginTop: '20px', textAlign: 'center', fontSize: '13px', color: 'var(--text-muted)' }}>
+        <div style={{ marginTop: '20px', padding: '12px', background: 'rgba(255, 255, 255, 0.03)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', textAlign: 'center' }}>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '8px', fontWeight: 600 }}>QUICK DEMO LOGIN</div>
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <button
+              type="button"
+              style={{ flex: 1, padding: '8px', fontSize: '12px', borderRadius: '6px', border: '1px solid var(--border-color)', background: 'var(--bg-card)', color: 'var(--text-main)', cursor: 'pointer', fontWeight: 600 }}
+              onClick={async () => {
+                const res = await login('alex@example.com', 'password123');
+                if (res.success) onClose();
+              }}
+            >
+              👤 Customer Demo
+            </button>
+            <button
+              type="button"
+              style={{ flex: 1, padding: '8px', fontSize: '12px', borderRadius: '6px', border: '1px solid var(--color-primary)', background: 'var(--color-primary-light)', color: 'var(--color-primary)', cursor: 'pointer', fontWeight: 700 }}
+              onClick={async () => {
+                const res = await login('admin@biteswift.com', 'admin123');
+                if (res.success) onClose();
+              }}
+            >
+              👑 Admin Demo
+            </button>
+          </div>
+        </div>
+
+        <div style={{ marginTop: '16px', textAlign: 'center', fontSize: '13px', color: 'var(--text-muted)' }}>
           {mode === 'login' ? (
             <p>
               Don't have an account?{' '}

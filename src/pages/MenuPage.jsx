@@ -45,9 +45,9 @@ export function MenuPage() {
     <div>
       {/* Hero Section */}
       <section className="hero-section">
-        <h1 className="hero-title">Delicious Local Food Delivered Fast</h1>
+        <h1 className="hero-title">Delicious Local Pastries & Drinks Delivered Fast</h1>
         <p className="hero-subtitle">
-          Explore artisanal burgers, wood-fired pizzas, healthy bowls, and handcrafted drinks from top neighborhood vendors.
+          Explore freshly prepared Nigerian delicacies like Spring Rolls, Samosa, Meat Pie, Milky Puff Puff, Chin Chin, and refreshing local drinks like Kunu Aya, Zobo & Milkshakes!
         </p>
       </section>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaPlus, FaCheck, FaFire } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
+import { formatNaira } from '../utils/currency';
 
 export function FoodCard({ item }) {
   const { cartItems, addToCart } = useCart();
@@ -30,7 +31,7 @@ export function FoodCard({ item }) {
         <p className="food-desc">{item.description}</p>
 
         <div className="food-footer">
-          <span className="food-price">${item.price.toFixed(2)}</span>
+          <span className="food-price">{formatNaira(item.price)}</span>
           <button 
             className="add-btn"
             onClick={() => addToCart(item)}

@@ -46,8 +46,8 @@ export function CartProvider({ children }) {
   };
 
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const deliveryFee = cartItems.length > 0 ? 2.99 : 0;
-  const tax = subtotal * 0.08;
+  const deliveryFee = cartItems.length > 0 ? 500 : 0;
+  const tax = Math.round(subtotal * 0.075);
   const total = subtotal + deliveryFee + tax;
   const totalItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -61,10 +61,10 @@ export function CartProvider({ children }) {
         removeFromCart,
         updateQuantity,
         clearCart,
-        subtotal: parseFloat(subtotal.toFixed(2)),
+        subtotal,
         deliveryFee,
-        tax: parseFloat(tax.toFixed(2)),
-        total: parseFloat(total.toFixed(2)),
+        tax,
+        total,
         totalItemCount
       }}
     >

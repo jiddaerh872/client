@@ -1,11 +1,13 @@
 import React from 'react';
-import { FaShoppingBag, FaUser, FaUtensils, FaClipboardList, FaSignOutAlt } from 'react-icons/fa';
+import { FaShoppingBag, FaUser, FaUtensils, FaClipboardList, FaSignOutAlt, FaUserShield } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 
 export function Navbar({ activeTab, setActiveTab, onOpenAuth }) {
   const { totalItemCount, setIsCartOpen } = useCart();
   const { user, isAuthenticated, logout } = useAuth();
+
+  const isAdmin = user && (user.is_admin === 1 || user.is_admin === true);
 
   return (
     <header className="navbar">
@@ -36,6 +38,20 @@ export function Navbar({ activeTab, setActiveTab, onOpenAuth }) {
             >
               <FaClipboardList size={16} />
               <span>My Orders</span>
+            </button>
+          )}
+
+          {isAdmin && (
+            <button 
+              className={`nav-item ${activeTab === 'admin' ? 'active' : ''}`}
+              onClick={() => setActiveTab('admin')}
+              style={{
+                color: activeTab === 'admin' ? 'var(--color-primary)' : '#F59E0B',
+                fontWeight: 700
+              }}
+            >
+              <FaUserShield size={16} color="#F59E0B" />
+              <span>Admin Dashboard</span>
             </button>
           )}
 

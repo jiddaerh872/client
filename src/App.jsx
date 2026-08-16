@@ -8,10 +8,12 @@ import { AuthModal } from './components/AuthModal';
 import { MenuPage } from './pages/MenuPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { OrdersPage } from './pages/OrdersPage';
+import { AdminDashboardPage } from './pages/AdminDashboardPage';
+import { formatNaira } from './utils/currency';
 import { FaCheckCircle } from 'react-icons/fa';
 
 function AppContent() {
-  const [activeTab, setActiveTab] = useState('menu'); // 'menu' | 'checkout' | 'orders'
+  const [activeTab, setActiveTab] = useState('menu'); // 'menu' | 'checkout' | 'orders' | 'admin'
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [orderSuccessMessage, setOrderSuccessMessage] = useState(null);
 
@@ -19,7 +21,7 @@ function AppContent() {
   const { isAuthenticated } = useAuth();
 
   const handleOrderSuccess = (order) => {
-    setOrderSuccessMessage(`Order #${order.id} placed successfully! Total: $${order.total_amount.toFixed(2)}`);
+    setOrderSuccessMessage(`Order #${order.id} placed successfully! Total: ${formatNaira(order.total_amount)}`);
     setActiveTab('orders');
     setTimeout(() => {
       setOrderSuccessMessage(null);
@@ -68,6 +70,10 @@ function AppContent() {
           <OrdersPage 
             onBackToMenu={() => setActiveTab('menu')}
           />
+        )}
+
+        {activeTab === 'admin' && (
+          <AdminDashboardPage />
         )}
       </main>
 

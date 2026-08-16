@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaTimes, FaPlus, FaMinus, FaTrash, FaArrowRight, FaShoppingBag } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
+import { formatNaira } from '../utils/currency';
 
 export function CartModal({ isOpen, onClose, onProceedCheckout }) {
   const {
@@ -55,7 +56,7 @@ export function CartModal({ isOpen, onClose, onProceedCheckout }) {
                   <img src={item.image_url} alt={item.name} className="cart-item-img" />
                   <div className="cart-item-info">
                     <h4 className="cart-item-title">{item.name}</h4>
-                    <div className="cart-item-price">${(item.price * item.quantity).toFixed(2)}</div>
+                    <div className="cart-item-price">{formatNaira(item.price * item.quantity)}</div>
                   </div>
 
                   <div className="qty-controls">
@@ -82,19 +83,19 @@ export function CartModal({ isOpen, onClose, onProceedCheckout }) {
             <div className="cart-footer">
               <div className="summary-row">
                 <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>{formatNaira(subtotal)}</span>
               </div>
               <div className="summary-row">
                 <span>Delivery Fee</span>
-                <span>${deliveryFee.toFixed(2)}</span>
+                <span>{formatNaira(deliveryFee)}</span>
               </div>
               <div className="summary-row">
-                <span>Est. Tax (8%)</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>VAT (7.5%)</span>
+                <span>{formatNaira(tax)}</span>
               </div>
               <div className="summary-row total">
                 <span>Total</span>
-                <span>${total.toFixed(2)}</span>
+                <span>{formatNaira(total)}</span>
               </div>
 
               <button

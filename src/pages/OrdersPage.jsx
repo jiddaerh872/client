@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { OrderStatusBadge } from '../components/OrderStatusBadge';
 import { FaBox, FaClock, FaMapMarkerAlt, FaExclamationCircle, FaSyncAlt } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
+import { formatNaira } from '../utils/currency';
 
 export function OrdersPage({ onBackToMenu }) {
   const { token, isAuthenticated } = useAuth();
@@ -109,7 +110,7 @@ export function OrdersPage({ onBackToMenu }) {
             </div>
             <div style={{ textAlign: 'right' }}>
               <span style={{ fontSize: '22px', fontWeight: 800, color: 'var(--color-primary)' }}>
-                ${order.total_amount.toFixed(2)}
+                {formatNaira(order.total_amount)}
               </span>
               <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{order.payment_method}</div>
             </div>
@@ -129,7 +130,7 @@ export function OrdersPage({ onBackToMenu }) {
                 <span>
                   <strong>{item.quantity}x</strong> {item.item_name}
                 </span>
-                <span>${(item.price_per_unit * item.quantity).toFixed(2)}</span>
+                <span>{formatNaira(item.price_per_unit * item.quantity)}</span>
               </div>
             ))}
           </div>
